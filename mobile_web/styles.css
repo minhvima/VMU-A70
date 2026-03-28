@@ -1,18 +1,18 @@
 ﻿:root {
-  --bg: #04131f;
-  --bg-soft: #0a1d2f;
-  --card: rgba(13, 34, 53, 0.84);
-  --card-strong: rgba(14, 43, 68, 0.96);
-  --line: rgba(142, 201, 244, 0.18);
+  --bg: #020814;
+  --shell: #070d21;
+  --panel: #0a1229;
+  --panel-soft: #11172d;
+  --frame: #040b19;
+  --line: rgba(64, 179, 255, 0.26);
+  --line-soft: rgba(125, 188, 241, 0.18);
   --text: #eef8ff;
-  --muted: #8eb2cb;
-  --blue: #62c7ff;
-  --gold: #ffd166;
-  --red: #f45c6c;
-  --shadow: 0 24px 60px rgba(1, 7, 15, 0.45);
-  --radius-xl: 28px;
-  --radius-lg: 20px;
-  --radius-md: 14px;
+  --muted: #95adc5;
+  --blue: #47c6ff;
+  --blue-strong: #1fb4ff;
+  --gold: #ffd447;
+  --red: #ff5d78;
+  --shadow: 0 18px 45px rgba(0, 0, 0, 0.34);
 }
 
 * {
@@ -24,18 +24,13 @@ body {
   min-height: 100%;
 }
 
-html {
-  overflow-x: hidden;
-}
-
 body {
   margin: 0;
   color: var(--text);
   font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
   background:
-    radial-gradient(circle at top right, rgba(98, 199, 255, 0.18), transparent 30%),
-    radial-gradient(circle at left center, rgba(255, 209, 102, 0.08), transparent 24%),
-    linear-gradient(180deg, #071a29 0%, #04131f 45%, #03101a 100%);
+    radial-gradient(circle at top center, rgba(70, 198, 255, 0.12), transparent 28%),
+    linear-gradient(180deg, #071021 0%, #030916 55%, #020711 100%);
 }
 
 img {
@@ -53,190 +48,129 @@ button {
 }
 
 .page-shell {
-  width: min(100% - 16px, 1120px);
+  width: min(100% - 16px, 520px);
   margin: 0 auto;
-  padding: 12px 0 max(22px, env(safe-area-inset-bottom));
+  padding: 14px 0 24px;
+}
+
+.game-card {
+  display: grid;
+  gap: 10px;
 }
 
 .hero-panel,
+.mission-panel,
 .stage-card,
-.side-panel > * {
-  border: 1px solid var(--line);
+.info-card,
+.credit-bar {
+  border: 1px solid var(--line-soft);
   box-shadow: var(--shadow);
-  backdrop-filter: blur(14px);
 }
 
 .hero-panel {
-  background: linear-gradient(135deg, rgba(11, 34, 54, 0.94), rgba(8, 23, 37, 0.92));
-  border-radius: 24px;
-  padding: 14px;
-  margin-bottom: 16px;
+  padding: 12px 14px 10px;
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(7, 14, 31, 0.98), rgba(5, 11, 24, 0.98));
 }
 
-.brand-block {
+.brand-row {
   display: grid;
-  gap: 12px;
-  justify-items: center;
-  text-align: center;
+  grid-template-columns: auto 1fr auto;
+  gap: 10px;
+  align-items: center;
 }
 
 .brand-logo {
-  width: clamp(92px, 29vw, 148px);
+  width: clamp(66px, 18vw, 88px);
   aspect-ratio: 1;
   object-fit: contain;
-  filter: drop-shadow(0 12px 26px rgba(98, 199, 255, 0.16));
 }
 
 .crest-logo {
-  width: clamp(68px, 22vw, 100px);
+  width: clamp(46px, 14vw, 62px);
   aspect-ratio: 1;
   object-fit: contain;
   border-radius: 999px;
-  padding: 8px;
+  padding: 4px;
   background: rgba(255, 255, 255, 0.04);
 }
 
 .brand-copy {
-  display: grid;
-  gap: 6px;
-}
-
-.brand-copy h1,
-.panel-heading h2,
-.info-card h2 {
-  margin: 0;
+  min-width: 0;
 }
 
 .eyebrow {
-  margin: 0;
-  color: var(--gold);
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 0.72rem;
+  margin: 0 0 4px;
+  color: rgba(225, 236, 247, 0.62);
+  font-size: 0.62rem;
   font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 .brand-copy h1 {
-  font-size: clamp(1.7rem, 8.2vw, 3rem);
-  line-height: 1.06;
-  font-weight: 800;
-}
-
-.lead {
   margin: 0;
-  color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.55;
+  color: var(--blue);
+  font-size: clamp(1.48rem, 6.8vw, 2.14rem);
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  text-transform: uppercase;
 }
 
 .hero-note {
-  margin-top: 14px;
-  padding: 14px 16px;
-  border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, rgba(25, 66, 101, 0.95), rgba(15, 47, 75, 0.92));
-  color: var(--text);
-  font-size: 0.96rem;
-  font-weight: 700;
-  line-height: 1.45;
-}
-
-.stat-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-  margin-top: 14px;
-}
-
-.stat-card,
-.mission-panel,
-.info-card,
-.action-card {
-  border-radius: var(--radius-lg);
-  background: var(--card);
-}
-
-.stat-card {
-  padding: 14px;
-}
-
-.stat-label {
-  display: block;
-  color: var(--muted);
-  font-size: 0.76rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-}
-
-.stat-value {
-  display: block;
   margin-top: 8px;
-  font-size: clamp(1.45rem, 6vw, 2rem);
-  font-family: "Consolas", "Courier New", monospace;
+  color: var(--muted);
+  font-size: 0.92rem;
+  text-align: center;
 }
 
 .mission-panel {
-  margin-top: 14px;
-  padding: 14px;
-}
-
-.panel-heading {
-  display: grid;
-  gap: 8px;
-}
-
-.panel-heading p,
-.info-card p {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.55;
+  padding: 8px;
+  border-radius: 22px;
+  background: linear-gradient(180deg, rgba(14, 22, 46, 0.98), rgba(10, 17, 35, 0.98));
 }
 
 .mission-strip {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  margin-top: 14px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
 }
 
 .mission-chip {
   display: grid;
   place-items: center;
-  min-height: 54px;
+  min-height: 50px;
   border-radius: 999px;
-  background: rgba(23, 49, 73, 0.92);
-  border: 1px solid rgba(110, 166, 209, 0.18);
-  color: #7a9cb6;
-  font-size: 1.02rem;
+  background: rgba(19, 30, 58, 0.95);
+  border: 1px solid rgba(70, 198, 255, 0.16);
+  color: rgba(142, 170, 202, 0.42);
+  font-size: 0.95rem;
   font-weight: 900;
-  transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+  transition: transform 160ms ease, background 160ms ease, color 160ms ease, border-color 160ms ease;
 }
 
 .mission-chip.active {
-  background: linear-gradient(135deg, rgba(59, 140, 104, 0.96), rgba(36, 91, 67, 0.96));
-  color: #fff6c1;
-  transform: translateY(-2px);
-}
-
-.game-layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-  align-items: start;
+  background: linear-gradient(180deg, rgba(255, 214, 78, 0.98), rgba(255, 177, 36, 0.98));
+  border-color: rgba(255, 230, 131, 0.92);
+  color: #523400;
+  transform: translateY(-1px);
 }
 
 .stage-card {
-  background: linear-gradient(180deg, rgba(9, 25, 38, 0.98), rgba(4, 15, 26, 0.96));
-  border-radius: 24px;
   padding: 10px;
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(7, 12, 30, 0.99), rgba(3, 8, 20, 0.99));
 }
 
 .stage-frame {
   position: relative;
-  border-radius: 20px;
   overflow: hidden;
-  border: 1px solid rgba(140, 197, 240, 0.16);
-  background: linear-gradient(180deg, #0a2940, #041722);
   aspect-ratio: 1 / 1;
+  border-radius: 24px;
+  border: 3px solid rgba(43, 162, 232, 0.42);
+  background: linear-gradient(180deg, #21aef2 0%, #1496dc 52%, #227cc0 100%);
 }
 
 #gameCanvas {
@@ -245,50 +179,132 @@ button {
   height: 100%;
 }
 
+.stage-hud {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.hud-card {
+  min-width: 104px;
+  padding: 8px 10px 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(111, 196, 247, 0.26);
+  background: rgba(9, 41, 61, 0.9);
+  box-shadow: 0 10px 24px rgba(1, 8, 14, 0.24);
+}
+
+.hud-card-right {
+  text-align: right;
+}
+
+.stat-label {
+  display: block;
+  color: rgba(225, 242, 255, 0.7);
+  font-size: 0.63rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.stat-value {
+  display: block;
+  margin-top: 3px;
+  color: #f4fbff;
+  font-size: clamp(1.2rem, 6vw, 1.8rem);
+  font-family: "Consolas", "Courier New", monospace;
+  font-weight: 900;
+}
+
 .fast-retract-button {
   position: absolute;
-  right: 10px;
-  bottom: 10px;
-  min-width: 96px;
+  right: 12px;
+  bottom: 12px;
+  z-index: 2;
   border: 0;
   border-radius: 999px;
   padding: 10px 14px;
-  background: linear-gradient(135deg, rgba(255, 209, 102, 0.98), rgba(255, 169, 60, 0.92));
-  color: #3b2200;
-  font-size: 0.78rem;
-  font-weight: 800;
+  background: linear-gradient(135deg, rgba(255, 214, 82, 0.98), rgba(255, 173, 44, 0.98));
+  color: #422600;
+  font-size: 0.76rem;
+  font-weight: 900;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  box-shadow: 0 14px 30px rgba(255, 191, 73, 0.34);
+  box-shadow: 0 12px 26px rgba(255, 183, 43, 0.28);
 }
 
 .hidden {
   display: none !important;
 }
 
-.side-panel {
+.stage-footer {
   display: grid;
-  gap: 12px;
+  gap: 8px;
+  padding-top: 10px;
 }
 
-.info-card,
-.action-card {
-  padding: 15px;
+.record-pill {
+  justify-self: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(13, 23, 43, 0.94);
+  border: 1px solid rgba(92, 170, 225, 0.2);
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
 }
 
-.info-card h2 {
-  margin-bottom: 10px;
-  font-size: 1.08rem;
+.record-pill strong {
+  color: #eef8ff;
+  font-family: "Consolas", "Courier New", monospace;
+  font-size: 0.95rem;
 }
 
-.info-card p + p {
-  margin-top: 8px;
+.legend-bar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  color: rgba(219, 236, 247, 0.62);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  flex: none;
+}
+
+.target-dot {
+  background: var(--gold);
+}
+
+.mine-dot {
+  background: var(--red);
+}
+
+.trap-dot {
+  background: #ced8e0;
 }
 
 .action-card {
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
-  background: var(--card-strong);
 }
 
 .primary-button,
@@ -296,83 +312,80 @@ button {
   width: 100%;
   border: 0;
   border-radius: 16px;
-  padding: 14px 16px;
-  font-size: 0.95rem;
-  font-weight: 800;
+  padding: 13px 14px;
+  font-size: 0.92rem;
+  font-weight: 900;
   letter-spacing: 0.03em;
-  cursor: pointer;
 }
 
 .primary-button {
-  background: linear-gradient(135deg, var(--blue), #8fe1ff);
-  color: #052032;
+  background: linear-gradient(135deg, var(--blue-strong), #7fd8ff);
+  color: #041b2a;
+  box-shadow: 0 14px 28px rgba(24, 175, 255, 0.22);
 }
 
 .secondary-button {
-  background: rgba(27, 59, 88, 0.98);
+  background: rgba(20, 31, 58, 0.98);
   color: var(--text);
+  border: 1px solid rgba(99, 154, 205, 0.2);
+}
+
+.info-card {
+  padding: 12px 14px;
+  border-radius: 18px;
+  background: rgba(10, 17, 35, 0.95);
+}
+
+.info-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.5;
+  text-align: center;
 }
 
 .credit-bar {
-  padding: 14px 16px;
-  text-align: center;
-  border-radius: var(--radius-lg);
-  background: rgba(8, 20, 32, 0.82);
-  color: #c7d9e8;
-  font-size: 0.77rem;
+  padding: 10px 14px;
+  border-radius: 16px;
+  background: rgba(8, 14, 27, 0.98);
+  color: rgba(204, 219, 231, 0.82);
+  font-size: 0.68rem;
   font-weight: 800;
-  line-height: 1.45;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-align: center;
   text-transform: uppercase;
 }
 
 @media (min-width: 560px) {
-  .stat-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .mission-strip {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 700px) {
   .page-shell {
-    width: min(100% - 24px, 1120px);
+    width: min(100% - 24px, 560px);
     padding-top: 18px;
   }
 
   .hero-panel {
-    padding: 18px;
+    padding: 14px 16px 12px;
   }
 
-  .stage-card {
-    padding: 14px;
+  .brand-logo {
+    width: 88px;
   }
 
-  .stage-frame {
-    border-radius: 24px;
-  }
-}
-
-@media (min-width: 860px) {
-  .brand-block {
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    gap: 16px;
-    align-items: center;
-    text-align: left;
-  }
-}
-
-@media (min-width: 980px) {
-  .game-layout {
-    grid-template-columns: minmax(0, 1fr) 320px;
-    gap: 18px;
+  .crest-logo {
+    width: 60px;
   }
 
-  .side-panel {
-    position: sticky;
-    top: 18px;
+  .hero-note {
+    font-size: 0.95rem;
+  }
+
+  .mission-chip {
+    min-height: 54px;
+    font-size: 1rem;
+  }
+
+  .hud-card {
+    min-width: 116px;
   }
 }
 
@@ -381,22 +394,43 @@ button {
     width: min(100% - 12px, 100%);
   }
 
-  .hero-panel,
-  .stage-card {
-    border-radius: 20px;
+  .brand-row {
+    gap: 8px;
+  }
+
+  .brand-logo {
+    width: 58px;
+  }
+
+  .crest-logo {
+    width: 42px;
   }
 
   .brand-copy h1 {
-    font-size: 1.56rem;
+    font-size: 1.28rem;
   }
 
-  .lead,
   .hero-note,
   .info-card p {
-    font-size: 0.91rem;
+    font-size: 0.82rem;
   }
 
   .mission-chip {
-    min-height: 50px;
+    min-height: 46px;
+    font-size: 0.88rem;
+  }
+
+  .hud-card {
+    min-width: 92px;
+    padding: 7px 9px 8px;
+  }
+
+  .stat-value {
+    font-size: 1.08rem;
+  }
+
+  .legend-bar {
+    gap: 6px 10px;
+    font-size: 0.68rem;
   }
 }

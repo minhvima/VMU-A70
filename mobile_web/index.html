@@ -12,73 +12,66 @@
   </head>
   <body>
     <div class="page-shell">
-      <header class="hero-panel">
-        <div class="brand-block">
-          <img class="brand-logo" src="./logo-70-main.png" alt="VMU 70 logo" />
-          <div class="brand-copy">
-            <p class="eyebrow">Mobile Web Edition</p>
-            <h1>Kỷ Niệm VMU 70 Năm</h1>
-            <p class="lead">
-              Mini game chạm màn hình, quăng neo và hoàn thành tổ hợp
-              <strong>V - M - U - 70</strong>.
-            </p>
+      <main class="game-card">
+        <header class="hero-panel">
+          <div class="brand-row">
+            <img class="brand-logo" src="./logo-70-main.png" alt="VMU 70 logo" />
+            <div class="brand-copy">
+              <p class="eyebrow">Mini Game Mobile</p>
+              <h1>KỶ NIỆM VMU 70 NĂM</h1>
+            </div>
+            <img class="crest-logo" src="./Logo-Truong-Dai-Hoc-Hang-Hai.webp" alt="VMU crest" />
           </div>
-          <img class="crest-logo" src="./Logo-Truong-Dai-Hoc-Hang-Hai.webp" alt="VMU crest" />
-        </div>
-
-        <div class="hero-note" id="heroNote">Nhấn Space để bắt đầu...</div>
-
-        <div class="stat-grid">
-          <article class="stat-card">
-            <span class="stat-label">Thời Gian</span>
-            <strong class="stat-value" id="timerValue">03:00</strong>
-          </article>
-          <article class="stat-card">
-            <span class="stat-label">Lượt Quăng</span>
-            <strong class="stat-value" id="shotsValue">0</strong>
-          </article>
-          <article class="stat-card">
-            <span class="stat-label">Kỷ Lục</span>
-            <strong class="stat-value" id="bestValue">00:00</strong>
-          </article>
-        </div>
+          <div class="hero-note" id="heroNote">Chạm màn hình để bắt đầu...</div>
+        </header>
 
         <section class="mission-panel">
-          <div class="panel-heading">
-            <h2>Tiến Độ Nhiệm Vụ</h2>
-            <p>Thu đủ 4 ký hiệu vàng để mở ảnh kỷ niệm.</p>
-          </div>
           <div class="mission-strip" id="missionStrip"></div>
         </section>
-      </header>
 
-      <main class="game-layout">
         <section class="stage-card">
           <div class="stage-frame">
+            <div class="stage-hud">
+              <article class="hud-card">
+                <span class="stat-label">Thời Gian</span>
+                <strong class="stat-value" id="timerValue">03:00</strong>
+              </article>
+              <article class="hud-card hud-card-right">
+                <span class="stat-label">Lượt Quăng</span>
+                <strong class="stat-value" id="shotsValue">0</strong>
+              </article>
+            </div>
+
             <canvas id="gameCanvas" width="720" height="720"></canvas>
+
             <button class="fast-retract-button hidden" id="fastRetractButton" type="button">
               Thu Nhanh
             </button>
           </div>
+
+          <div class="stage-footer">
+            <div class="record-pill">Kỷ lục <strong id="bestValue">00:00</strong></div>
+            <div class="legend-bar">
+              <span class="legend-item"><span class="legend-dot target-dot"></span>Mục tiêu</span>
+              <span class="legend-item"><span class="legend-dot mine-dot"></span>Thủy lôi</span>
+              <span class="legend-item"><span class="legend-dot trap-dot"></span>Bẫy (-5s)</span>
+            </div>
+          </div>
         </section>
 
-        <aside class="side-panel">
-          <section class="info-card">
-            <h2>Điều Khiển</h2>
-            <p>Chạm sân chơi hoặc nhấn Space để tung neo.</p>
-            <p>Giữ nút Thu Nhanh hoặc phím Shift khi neo rút về để tăng tốc.</p>
-            <p>Bẫy chữ trắng trừ 5 giây. Thủy lôi làm neo rút về và gây choáng ngắn.</p>
-          </section>
+        <section class="action-card">
+          <button class="primary-button" id="actionButton" type="button">Bắt Đầu</button>
+          <button class="secondary-button" id="resetButton" type="button">Màn Chờ</button>
+        </section>
 
-          <section class="action-card">
-            <button class="primary-button" id="actionButton" type="button">Bắt Đầu Nhiệm Vụ</button>
-            <button class="secondary-button" id="resetButton" type="button">Về Màn Hình Chờ</button>
-          </section>
+        <section class="info-card compact">
+          <p>
+            Chạm sân chơi để tung neo, giữ <strong>Thu Nhanh</strong> khi neo rút về và thu đủ
+            <strong>V - M - U - 70</strong>.
+          </p>
+        </section>
 
-          <footer class="credit-bar">
-            COPYRIGHT BY PHAM TRUNG MINH - KHOA CNTT
-          </footer>
-        </aside>
+        <footer class="credit-bar">COPYRIGHT BY PHAM TRUNG MINH - KHOA CNTT</footer>
       </main>
     </div>
 

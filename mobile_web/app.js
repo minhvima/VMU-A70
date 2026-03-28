@@ -556,7 +556,7 @@ class MobileWebApp {
     this.assets = { mainLogo: null, crest: null };
     this.engine = new GameEngine(CONFIG.width, CONFIG.height);
     this.state = 'start';
-    this.notice = 'Nhấn Space để bắt đầu...';
+    this.notice = 'Chạm màn hình để bắt đầu...';
     this.lastResult = { shots: 0, timeLeft: 0 };
     this.bestRemaining = this.loadBestRecord();
     this.penaltyBannerUntil = 0;
@@ -678,14 +678,14 @@ class MobileWebApp {
   startGame() {
     this.engine.start();
     this.state = 'playing';
-    this.notice = 'Chạm màn hình để tung neo. Giữ Shift hoặc nút Thu Nhanh khi neo rút về.';
+    this.notice = 'Chạm màn hình để tung neo. Giữ nút Thu Nhanh khi neo rút về.';
     this.refreshUI();
   }
 
   resetToStart() {
     this.engine = new GameEngine(CONFIG.width, CONFIG.height);
     this.state = 'start';
-    this.notice = 'Nhấn Space để bắt đầu...';
+    this.notice = 'Chạm màn hình để bắt đầu...';
     this.refreshUI();
   }
 
@@ -751,25 +751,25 @@ class MobileWebApp {
     );
 
     if (this.state === 'playing') {
-      dom.actionButton.textContent = 'Làm Mới Ván Chơi';
+      dom.actionButton.textContent = 'Làm Mới';
       dom.actionButton.style.background = 'linear-gradient(135deg, #f45c6c, #ff8996)';
       dom.actionButton.style.color = '#ffffff';
-      dom.resetButton.textContent = 'Về Màn Hình Chờ';
+      dom.resetButton.textContent = 'Màn Chờ';
     } else if (this.state === 'win') {
       dom.actionButton.textContent = 'Chơi Lại';
       dom.actionButton.style.background = 'linear-gradient(135deg, #ffd166, #ffe6a2)';
       dom.actionButton.style.color = '#4a2b00';
-      dom.resetButton.textContent = 'Về Màn Hình Chờ';
+      dom.resetButton.textContent = 'Màn Chờ';
     } else if (this.state === 'gameover') {
       dom.actionButton.textContent = 'Thử Lại';
       dom.actionButton.style.background = 'linear-gradient(135deg, #f45c6c, #ff8996)';
       dom.actionButton.style.color = '#ffffff';
-      dom.resetButton.textContent = 'Về Màn Hình Chờ';
+      dom.resetButton.textContent = 'Màn Chờ';
     } else {
-      dom.actionButton.textContent = 'Bắt Đầu Nhiệm Vụ';
+      dom.actionButton.textContent = 'Bắt Đầu';
       dom.actionButton.style.background = 'linear-gradient(135deg, #62c7ff, #8fe1ff)';
       dom.actionButton.style.color = '#052032';
-      dom.resetButton.textContent = 'Về Màn Hình Chờ';
+      dom.resetButton.textContent = 'Màn Chờ';
     }
   }
 
@@ -779,16 +779,16 @@ class MobileWebApp {
     if (timestamp < this.penaltyBannerUntil) {
       ctx.save();
       ctx.fillStyle = 'rgba(149, 28, 28, 0.84)';
-      ctx.fillRect(0, 0, CONFIG.width, 74);
+      ctx.fillRect(0, 0, CONFIG.width, 58);
       ctx.fillStyle = '#ffffff';
-      ctx.font = '900 22px Segoe UI, Roboto, Arial, sans-serif';
+      ctx.font = '900 18px Segoe UI, Roboto, Arial, sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText('BẪY CHỮ TRẮNG -5 GIÂY', CONFIG.width / 2, 44);
+      ctx.fillText('BẪY CHỮ TRẮNG -5 GIÂY', CONFIG.width / 2, 36);
       ctx.restore();
     }
 
     if (this.state === 'start') {
-      this.drawOverlay('NHIỆM VỤ SĨ QUAN', 'Nhấn Space để bắt đầu...\nQuăng neo để thu thập V - M - U - 70 và né bẫy chữ trắng.', '#62c7ff');
+      this.drawOverlay('CHẠM ĐỂ BẮT ĐẦU', 'Chạm màn hình để tung neo.\nThu thập V - M - U - 70 và né bẫy chữ trắng.', '#62c7ff');
     } else if (this.state === 'win') {
       this.drawOverlay('CHIẾN THẮNG', `Hoàn thành với ${formatTime(this.lastResult.timeLeft)} còn lại\nvà ${this.lastResult.shots} lượt quăng.`, '#ffd166');
     } else if (this.state === 'gameover') {
@@ -798,32 +798,36 @@ class MobileWebApp {
 
   drawOverlay(title, subtitle, accent) {
     ctx.save();
-    ctx.fillStyle = 'rgba(3, 17, 27, 0.72)';
+    ctx.fillStyle = 'rgba(3, 12, 22, 0.2)';
     ctx.fillRect(0, 0, CONFIG.width, CONFIG.height);
 
-    if (this.assets.mainLogo) {
-      const logoSize = 220;
-      ctx.drawImage(this.assets.mainLogo, CONFIG.width / 2 - logoSize / 2, 96, logoSize, logoSize);
-    }
+    const cardWidth = 512;
+    const cardHeight = 156;
+    const cardX = (CONFIG.width - cardWidth) / 2;
+    const cardY = 286;
+
+    ctx.fillStyle = 'rgba(5, 16, 29, 0.92)';
+    ctx.fillRect(cardX, cardY, cardWidth, cardHeight);
+
+    ctx.strokeStyle = accent;
+    ctx.lineWidth = 2;
+    ctx.strokeRect(cardX, cardY, cardWidth, cardHeight);
 
     ctx.textAlign = 'center';
     ctx.fillStyle = accent;
-    ctx.font = '900 30px Segoe UI, Roboto, Arial, sans-serif';
-    ctx.fillText(title, CONFIG.width / 2, 356);
+    ctx.font = '900 26px Segoe UI, Roboto, Arial, sans-serif';
+    ctx.fillText(title, CONFIG.width / 2, cardY + 42);
 
     const lines = subtitle.split('\n');
     ctx.fillStyle = '#eef8ff';
     ctx.font = '700 18px Segoe UI, Roboto, Arial, sans-serif';
     lines.forEach((line, index) => {
-      ctx.fillText(line, CONFIG.width / 2, 414 + index * 30);
+      ctx.fillText(line, CONFIG.width / 2, cardY + 86 + index * 28);
     });
-
-    ctx.fillStyle = '#c9def0';
-    ctx.font = '700 12px Segoe UI, Roboto, Arial, sans-serif';
-    ctx.fillText('COPYRIGHT BY PHAM TRUNG MINH - KHOA CNTT', CONFIG.width / 2, CONFIG.height - 34);
     ctx.restore();
   }
 }
 
 new MobileWebApp();
+
 
