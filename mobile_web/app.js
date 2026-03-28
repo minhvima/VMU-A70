@@ -573,7 +573,7 @@ class MobileWebApp {
   async loadAssets() {
     const [mainLogo, crest] = await Promise.all([
       loadImage('./logo-70-main.png'),
-      loadImage('./Logo-Truong-Dai-Hoc-Hang-Hai.webp'),
+      loadImage('./logoVMU-chuan.png'),
     ]);
     this.assets.mainLogo = mainLogo;
     this.assets.crest = crest;
@@ -829,5 +829,6 @@ class MobileWebApp {
 }
 
 new MobileWebApp();
+
 
 
