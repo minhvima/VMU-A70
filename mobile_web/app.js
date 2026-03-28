@@ -478,11 +478,11 @@ class GameEngine {
     context.textBaseline = 'middle';
     if (glow) {
       context.fillStyle = glow;
-      context.font = `900 ${fontSize + 8}px Bahnschrift, Trebuchet MS, sans-serif`;
+      context.font = `900 ${fontSize + 8}px Segoe UI, Roboto, Arial, sans-serif`;
       context.fillText(text, x, y);
     }
     context.fillStyle = fill;
-    context.font = `900 ${fontSize}px Bahnschrift, Trebuchet MS, sans-serif`;
+    context.font = `900 ${fontSize}px Segoe UI, Roboto, Arial, sans-serif`;
     context.fillText(text, x, y);
     context.restore();
   }
@@ -537,7 +537,7 @@ class GameEngine {
 
     if (this.stunTimer > 0) {
       context.fillStyle = '#08131e';
-      context.font = '900 14px Bahnschrift, Trebuchet MS, sans-serif';
+      context.font = '900 14px Segoe UI, Roboto, Arial, sans-serif';
       context.fillText('X', x - 8, y - 18);
       context.fillText('X', x + 8, y - 18);
     } else {
@@ -781,7 +781,7 @@ class MobileWebApp {
       ctx.fillStyle = 'rgba(149, 28, 28, 0.84)';
       ctx.fillRect(0, 0, CONFIG.width, 74);
       ctx.fillStyle = '#ffffff';
-      ctx.font = '900 22px Bahnschrift, Trebuchet MS, sans-serif';
+      ctx.font = '900 22px Segoe UI, Roboto, Arial, sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText('BẪY CHỮ TRẮNG -5 GIÂY', CONFIG.width / 2, 44);
       ctx.restore();
@@ -808,21 +808,22 @@ class MobileWebApp {
 
     ctx.textAlign = 'center';
     ctx.fillStyle = accent;
-    ctx.font = '900 30px Palatino Linotype, Book Antiqua, serif';
+    ctx.font = '900 30px Segoe UI, Roboto, Arial, sans-serif';
     ctx.fillText(title, CONFIG.width / 2, 356);
 
     const lines = subtitle.split('\n');
     ctx.fillStyle = '#eef8ff';
-    ctx.font = '700 18px Bahnschrift, Trebuchet MS, sans-serif';
+    ctx.font = '700 18px Segoe UI, Roboto, Arial, sans-serif';
     lines.forEach((line, index) => {
       ctx.fillText(line, CONFIG.width / 2, 414 + index * 30);
     });
 
     ctx.fillStyle = '#c9def0';
-    ctx.font = '700 12px Bahnschrift, Trebuchet MS, sans-serif';
+    ctx.font = '700 12px Segoe UI, Roboto, Arial, sans-serif';
     ctx.fillText('COPYRIGHT BY PHAM TRUNG MINH - KHOA CNTT', CONFIG.width / 2, CONFIG.height - 34);
     ctx.restore();
   }
 }
 
 new MobileWebApp();
+
