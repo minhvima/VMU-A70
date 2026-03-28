@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>VMU 70 Mobile Web</title>
+    <meta
+      name="description"
+      content="Mini game web mobile cho su kien ky niem VMU 70 nam."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero-panel">
+        <div class="brand-block">
+          <img class="brand-logo" src="./logo-70-main.png" alt="VMU 70 logo" />
+          <div class="brand-copy">
+            <p class="eyebrow">Mobile Web Edition</p>
+            <h1>Ká»· Niá»‡m VMU 70 NÄƒm</h1>
+            <p class="lead">
+              Mini game cháº¡m mÃ n hÃ¬nh, quÄƒng neo vÃ  hoÃ n thÃ nh tá»• há»£p
+              <strong>V - M - U - 70</strong>.
+            </p>
+          </div>
+          <img class="crest-logo" src="./Logo-Truong-Dai-Hoc-Hang-Hai.webp" alt="VMU crest" />
+        </div>
+
+        <div class="hero-note" id="heroNote">Nháº¥n Space Ä‘á»ƒ báº¯t Ä‘áº§u...</div>
+
+        <div class="stat-grid">
+          <article class="stat-card">
+            <span class="stat-label">Thá»i Gian</span>
+            <strong class="stat-value" id="timerValue">03:00</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">LÆ°á»£t QuÄƒng</span>
+            <strong class="stat-value" id="shotsValue">0</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Ká»· Lá»¥c</span>
+            <strong class="stat-value" id="bestValue">00:00</strong>
+          </article>
+        </div>
+
+        <section class="mission-panel">
+          <div class="panel-heading">
+            <h2>Tiáº¿n Äá»™ Nhiá»‡m Vá»¥</h2>
+            <p>Thu Ä‘á»§ 4 kÃ½ hiá»‡u vÃ ng Ä‘á»ƒ má»Ÿ áº£nh ká»· niá»‡m.</p>
+          </div>
+          <div class="mission-strip" id="missionStrip"></div>
+        </section>
+      </header>
+
+      <main class="game-layout">
+        <section class="stage-card">
+          <div class="stage-frame">
+            <canvas id="gameCanvas" width="720" height="720"></canvas>
+            <button class="fast-retract-button hidden" id="fastRetractButton" type="button">
+              Thu Nhanh
+            </button>
+          </div>
+        </section>
+
+        <aside class="side-panel">
+          <section class="info-card">
+            <h2>Äiá»u Khiá»ƒn</h2>
+            <p>Cháº¡m sÃ¢n chÆ¡i hoáº·c nháº¥n Space Ä‘á»ƒ tung neo.</p>
+            <p>Giá»¯ nÃºt Thu Nhanh hoáº·c phÃ­m Shift khi neo rÃºt vá» Ä‘á»ƒ tÄƒng tá»‘c.</p>
+            <p>Báº«y chá»¯ tráº¯ng trá»« 5 giÃ¢y. Thá»§y lÃ´i lÃ m neo rÃºt vá» vÃ  gÃ¢y choÃ¡ng ngáº¯n.</p>
+          </section>
+
+          <section class="action-card">
+            <button class="primary-button" id="actionButton" type="button">Báº¯t Äáº§u Nhiá»‡m Vá»¥</button>
+            <button class="secondary-button" id="resetButton" type="button">Vá» MÃ n HÃ¬nh Chá»</button>
+          </section>
+
+
+          <footer class="credit-bar">
+            COPYRIGHT BY PHAM TRUNG MINH - KHOA CNTT
+          </footer>
+        </aside>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
+
